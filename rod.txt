@@ -1,0 +1,11 @@
+Look into
+
+react-component
+react-kit
+form-elements
+
+Add header
+What a user might want from this page?
+Persistant Data -- saves to redux
+Add a styling framework (bootstrap, material design, one by Uber, airbnb)
+Look into Airbnb tools
