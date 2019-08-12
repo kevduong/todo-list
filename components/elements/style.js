@@ -9,6 +9,6 @@ export const StyledWrapper = styled.div`
 `;
 
 export const StyledDateTitle = styled.h2`
-  font: 400 12px georgia;
+  font: 500 24px 'Roboto', sans-serif;
   color: white;
 `;

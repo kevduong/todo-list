@@ -2,10 +2,14 @@ import React from 'react';
 import { StyledCard } from './style';
 import DateTitle from '../elements/DateTitle';
 
-export default function Card(props) {
+export default function Card() {
+  const date = {
+    title: 'Hello World'
+  }
+
   return (
     <StyledCard>
-      <DateTitle>title="what"</DateTitle>
+      <DateTitle date={date}/>
     </StyledCard>
   );
 };

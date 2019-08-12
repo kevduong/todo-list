@@ -1,17 +1,21 @@
 import React from 'react';
 import { StyledDateTitle } from './style';
-import { dateType } from './types/index';
+import { dateType } from './types';
 
-export default function DateTitle(date) {
+const DateTitle = ({date}) => {
   const { title } = date;
 
   return (
-    <StyledDateTitle>
+   <div>
+      <StyledDateTitle>
       {title}
     </StyledDateTitle>
+   </div>
   );
 }
 
 DateTitle.propTypes = {
   date: dateType
 };
+
+export default DateTitle;
