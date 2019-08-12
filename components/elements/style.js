@@ -5,7 +5,10 @@ export const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background: linear-gradient(to left, #CEFCED, #D6BBF8);
-  ${'' /* height: 500px; */}
-  border: 1px solid black;
-  ${'' /* width: 100%; */}
+  height: 100vh;
+`;
+
+export const StyledDateTitle = styled.h2`
+  font: 400 12px georgia;
+  color: white;
 `;

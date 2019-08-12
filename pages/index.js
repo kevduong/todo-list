@@ -1,16 +1,22 @@
+import { Fragment } from 'react';
 import Head from 'next/head';
-import HeaderNav from '../components/HeaderNav/HeaderNav';
+import Nav from '../components/Nav/Nav';
 import StyledWrapper from '../components/elements/Wrapper';
+import styled from 'styled-components';
+
+const Main = styled.div`
+  background: linear-gradient(to left,#CEFCED,#D6BBF8);
+`;
 
 const Index = () => (
-  <div>
+  <Main>
     <Head>
       <title>Todo List</title>
       <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
     </Head>
-    <HeaderNav />
+    <Nav />
     <StyledWrapper />
-  </div>
+  </Main>
 );
 
 export default Index;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCard = styled.div`
+export const StyledNav = styled.div`
   background: linear-gradient(#72EEB2, #4CACF5);
   width: 30%;
   min-height: 300px;
