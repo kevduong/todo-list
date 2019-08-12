@@ -1,5 +1,7 @@
-import { shape, number, string, oneOf } from 'prop-types';
+import PropTypes from 'prop-types';
+
+const { shape, string } = PropTypes;
 
 export const dateType = shape({
-  title: string.isRequired,
+  title: string.isRequired
 });
