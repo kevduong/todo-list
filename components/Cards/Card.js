@@ -1,8 +1,9 @@
 import React from 'react';
+import moment from 'moment';
 import { StyledCard } from './style';
 import DateTitle from '../elements/DateTitle';
-import moment from 'moment';
-import InputTask from '../elements/InputTask';
+import TaskContainer from '../elements/TaskContainer';
+import AddButton from '../Buttons/AddButton/AddButton';
 
 export default function Card() {
   const date = {
@@ -12,7 +13,8 @@ export default function Card() {
   return (
     <StyledCard>
       <DateTitle date={date} />
-      <InputTask />
+      <TaskContainer/>
+      <AddButton/>
     </StyledCard>
   );
 };
