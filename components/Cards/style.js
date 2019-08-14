@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledCard = styled.div`
+  position: relative;
   background: linear-gradient(#72EEB2, #4CACF5);
   width: 30%;
   min-height: 300px;
