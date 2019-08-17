@@ -4,11 +4,12 @@ import { StyledCard } from './style';
 import DateTitle from '../elements/DateTitle';
 import TaskContainer from '../elements/TaskContainer';
 import AddButton from '../Buttons/AddButton/AddButton';
-import { Input } from 'semantic-ui-react';
 
 class Card extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.item = React.createRef;
 
     this.state = {
       isHidden: true,
@@ -16,7 +17,6 @@ class Card extends React.Component {
     };
 
     this.showInput = this.showInput.bind(this);
-    this.updateInputValue = this.updateInputValue.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -27,22 +27,21 @@ class Card extends React.Component {
     });
   }
 
-  updateInputValue(e) {
-    e.preventDefault();
-    this.setState({
-      items: [
-        e.target.value
-      ]
-    });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
+
+    const item = this.item.value;
+
+    /* Immutable data
+    Use spread operator to mutate over 
+    existing data and adding new data
+    */
+    const newItems = [...this.state.items, item];
     this.setState({
-      items: [
-        e.target.value
-      ]
+      items: newItems
     });
+
+    e.target.reset();
   }
 
   render() {
@@ -64,13 +63,11 @@ class Card extends React.Component {
         </div>
         {!this.state.isHidden ?
           <form onSubmit={this.handleSubmit}>
-            <Input
-              className="inputClose"
-              action='submit'
+            <input
+              type="text"
+              action='fuck'
               color="teal"
-              ref={this.props.inputElement}
-              value={this.state.items}
-              onChange={this.handleSubmit}
+              ref={input => this.item = input}
             />
           </form> :
           null
