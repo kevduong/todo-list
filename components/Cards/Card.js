@@ -16,6 +16,7 @@ class Card extends React.Component {
       items: []
     };
 
+    // Performant
     this.showInput = this.showInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -37,10 +38,9 @@ class Card extends React.Component {
     existing data and adding new data
     */
     const newItems = [...this.state.items, item];
-    this.setState({
-      items: newItems
-    });
+    this.setState({ items: newItems });
 
+    // Clears input
     e.target.reset();
   }
 
@@ -57,7 +57,9 @@ class Card extends React.Component {
         currentItem={this.currentItem}
       >
         <DateTitle date={date} />
-        <TaskContainer />
+        <TaskContainer
+          items={this.state.items}
+        />
         <div onClick={this.showInput}>
           {this.state.isHidden && <AddButton />}
         </div>
