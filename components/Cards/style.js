@@ -1,12 +1,21 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Card, CardMedia } from "@material-ui/core";
 
-export const StyledCard = styled.div`
-  position: relative;
-  background: linear-gradient(#72EEB2, #4CACF5);
-  width: 30%;
-  min-height: 300px;
-  padding: 20px;
-  border-radius: 20px;
-  overflow: auto;
-  box-shadow: 18px 23px 70px -9px rgba(0,0,0,0.4);
+export const StyledCard = styled(Card)`
+  max-width: 355px;
+  border-radius: 10px;
+
+  .MuiPaper-rounded {
+    border-radius: 20px !important;
+  }
+`;
+
+export const StyledCardMedia = styled(CardMedia)`
+  min-height: 200px;
+`;
+
+export const StyledForm = styled.form`
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 `;
