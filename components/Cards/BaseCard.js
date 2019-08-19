@@ -1,20 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import cred from '../../utils/cred';
 import moment from 'moment';
-import { Card, CardMedia } from '@material-ui/core';
-import CardContent from '@material-ui/core/CardContent';
-import AddIcon from '@material-ui/icons/Add';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
+import { Button, CardContent } from '@material-ui/core';
+import { Typography, TextField } from '@material-ui/core';
+import { StyledCard, StyledCardMedia, StyledForm } from './style';
 
 import DateTitle from '../elements/DateTitle';
-import TaskContainer from '../elements/TaskContainer';
-
-const StyledCard = styled(Card)`
-  max-width: 345px;
-`;
+import ListItems from '../elements/ListItems';
 
 class BaseCard extends React.Component {
   constructor(props) {
@@ -33,12 +26,14 @@ class BaseCard extends React.Component {
 
   componentDidMount() {
     axios
-      .get('https://api.unsplash.com/photos/?client_id=' + cred.APP_ID)
+      .get('https://api.unsplash.com/photos/random/?client_id=' + cred.APP_ID)
       .then(data => {
-        this.setState({ imgs: data.data });
+        this.setState({ imgs: data.data.urls.small });
+        console.log('image state', this.state.imgs);
+        
       })
       .catch(err => {
-        console.log('Error happened during fetching!', err);
+        alert('Error happened during fetching!', err);
       });
   }
 
@@ -46,7 +41,6 @@ class BaseCard extends React.Component {
     e.preventDefault();
 
     const item = this.item.value;
-    console.log('fired');
 
     /* Immutable data
     Use spread operator to mutate over 
@@ -66,7 +60,7 @@ class BaseCard extends React.Component {
 
     return (
       <StyledCard>
-        <CardMedia
+        <StyledCardMedia
           image={this.state.imgs}
           title="Contemplative Reptile"
         />
@@ -74,23 +68,24 @@ class BaseCard extends React.Component {
           <Typography color="textSecondary">
             <DateTitle date={date} />
           </Typography>
-          <form onSubmit={this.handleSubmit}>
+          <StyledForm onSubmit={this.handleSubmit}>
             <TextField
               id="standard-with-placeholder"
               label="Add Task"
               placeholder="Add Task"
-              margin="normal"
+              margin="large"
               type="text"
               // Reference for handleSubmit()
               inputRef={input => this.item = input}
             />
-            <Fab color="secondary" aria-label="add" >
-              <AddIcon fontSize="small" type="submit" />
-            </Fab>
-          </form>
+            <Button variant="outlined" color="primary" type="submit">
+              Add
+            </Button>
+          </StyledForm>
         </CardContent>
         <CardContent>
-          <TaskContainer items={this.state.items} />
+          {/* Pass state of items down to child comp */}
+          <ListItems items={this.state.items} />
         </CardContent>
       </StyledCard>
     );
