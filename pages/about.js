@@ -12,7 +12,7 @@ const Main = styled.div`
 const StyledPaper = styled(Paper)`
   background: url('https://66.media.tumblr.com/77d873c4239ac046fcddb443d8f3fc5c/tumblr_mhbaikxIQE1re1fojo1_540.jpg');
   background-size: fill;
-  height: 50%;
+  height: 30%;
   width: 50%;
   margin: 0 auto;
   background-repeat: no-repeat;
@@ -22,11 +22,10 @@ export default function About() {
   return (
     <Main>
      <Nav />
-     <StyledPaper>
+     <StyledPaper/>
       <Typography variant="h6" component="h3" color="primary">
        This page was created for fun and learning!
       </Typography>
-     </StyledPaper>
     </Main>
   )
 }
