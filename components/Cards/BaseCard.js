@@ -30,7 +30,7 @@ class BaseCard extends React.Component {
       .then(data => {
         this.setState({ imgs: data.data.urls.small });
         console.log('image state', this.state.imgs);
-        
+
       })
       .catch(err => {
         alert('Error happened during fetching!', err);
