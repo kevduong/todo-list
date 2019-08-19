@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyledWrapper } from './style';
-import Card from '../Cards/Card';
+import BaseCard from '../Cards/BaseCard';
 
 export default function Wrapper(props) {
   return (
     <StyledWrapper>
-      <Card />
+      <BaseCard />
     </StyledWrapper>
   );
 }

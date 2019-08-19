@@ -18,14 +18,4 @@ class TaskContainer extends React.Component {
   }
 }
 
-// const TaskContainer = (props) => (
-//   <div>
-//     <Container textAlign='left'>
-//       <ul>
-//         <li>{this.props.items}</li>
-//       </ul>
-//     </Container>
-//   </div>
-// )
-
 export default TaskContainer;
