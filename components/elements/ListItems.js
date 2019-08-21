@@ -28,7 +28,6 @@ class ListItems extends React.Component {
     }
 
     this.checkedBox = this.checkedBox.bind(this);
-    this.removeItem = this.removeItem.bind(this);
   }
 
   checkedBox() {
@@ -37,21 +36,17 @@ class ListItems extends React.Component {
     }));
   }
 
-  removeItem(i) {
-    this.setState(state => {
-      const list = this.props.items.filter((item, j) => i !== j);
-
-      return {
-        list,
-      };
-    });
-  };
+  removeItem(e) {
+    this.props.removeTodo(e);
+  }
 
   render() {
     return (
       <List>
-        {/* Mapping through the list of items 
-      from the state of the BaseCard comp */}
+        {/* 
+        Mapping through the list of items 
+        from the state of the BaseCard comp 
+        */}
         {this.props.items.map(item => (
           <ListItem role={undefined} dense button>
             <ListItemIcon>
@@ -60,7 +55,7 @@ class ListItems extends React.Component {
             <StyledListItemText checked={this.state.checked}>{item}
             </StyledListItemText>
             <StyledListItemIcon>
-              <DeleteIcon onClick={this.removeItem} />
+              <DeleteIcon onClick={() => { this.removeItem(item) }} />
             </StyledListItemIcon>
           </ListItem>
         ))}

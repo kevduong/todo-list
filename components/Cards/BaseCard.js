@@ -22,9 +22,11 @@ class BaseCard extends React.Component {
 
     // Performant
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
   }
 
   componentDidMount() {
+    // Fetches random images from the unsplash endpoint
     axios
       .get('https://api.unsplash.com/photos/random/?client_id=' + cred.APP_ID)
       .then(data => {
@@ -42,9 +44,10 @@ class BaseCard extends React.Component {
 
     const item = this.item.value;
 
-    /* Immutable data
-    Use spread operator to mutate over 
-    existing data and adding new data
+    /* 
+      Immutable data
+      Use spread operator to mutate over 
+      existing data and adding new data
     */
     const newItems = [...this.state.items, item];
     this.setState({ items: newItems, hideInput: true });
@@ -53,13 +56,19 @@ class BaseCard extends React.Component {
     e.target.reset();
   }
 
+  removeTodo(i) {
+    this.setState({
+      items: this.state.items.filter(el => el !== i)
+    })
+  }
+
   render() {
     const date = {
       title: moment().format("dddd, MMMM Do YYYY")
     }
 
     return (
-      <StyledCard>
+      <StyledCard items={this.state.items}>
         <StyledCardMedia
           image={this.state.imgs}
           title="Contemplative Reptile"
@@ -84,8 +93,14 @@ class BaseCard extends React.Component {
           </StyledForm>
         </CardContent>
         <CardContent>
-          {/* Pass state of items down to child comp */}
-          <ListItems items={this.state.items} />
+          {/* 
+            Pass state of items and 
+            removeTodo method down to child comp 
+          */}
+          <ListItems
+            items={this.state.items}
+            removeTodo={this.removeTodo}
+          />
         </CardContent>
       </StyledCard>
     );
