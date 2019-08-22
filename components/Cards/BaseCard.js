@@ -17,7 +17,7 @@ class BaseCard extends React.Component {
 
     this.state = {
       items: [],
-      imgs: []
+      img: [],
     };
 
     // Performant
@@ -30,9 +30,7 @@ class BaseCard extends React.Component {
     axios
       .get('https://api.unsplash.com/photos/random/?client_id=' + cred.APP_ID)
       .then(data => {
-        this.setState({ imgs: data.data.urls.small });
-        console.log('image state', this.state.imgs);
-
+        this.setState({ img: data.data.urls.small });
       })
       .catch(err => {
         alert('Error happened during fetching!', err);
@@ -70,19 +68,17 @@ class BaseCard extends React.Component {
     return (
       <StyledCard items={this.state.items}>
         <StyledCardMedia
-          image={this.state.imgs}
-          title="Contemplative Reptile"
+          image={this.state.img}
+          title="Card Image"
         />
         <CardContent>
-          <Typography color="textSecondary">
-            <DateTitle date={date} />
-          </Typography>
+          <DateTitle date={date} />
           <StyledForm onSubmit={this.handleSubmit}>
             <TextField
               id="standard-with-placeholder"
               label="Add Task"
               placeholder="Add Task"
-              margin="large"
+              margin="normal"
               type="text"
               // Reference for handleSubmit()
               inputRef={input => this.item = input}

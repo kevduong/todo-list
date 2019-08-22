@@ -2,15 +2,15 @@ import React from 'react';
 import { StyledDateTitle } from './style';
 import { dateType } from './types';
 
-const DateTitle = ({date}) => {
+const DateTitle = ({ date }) => {
   const { title } = date;
 
   return (
-   <div>
+    <div>
       <StyledDateTitle>
-      {title}
-    </StyledDateTitle>
-   </div>
+        {title}
+      </StyledDateTitle>
+    </div>
   );
 }
 

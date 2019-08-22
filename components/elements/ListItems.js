@@ -30,7 +30,7 @@ class ListItems extends React.Component {
     this.checkedBox = this.checkedBox.bind(this);
   }
 
-  checkedBox() {
+  checkedBox(item, index) {
     this.setState(prevState => ({
       checked: !prevState.checked
     }));
@@ -44,15 +44,21 @@ class ListItems extends React.Component {
     return (
       <List>
         {/* 
-        Mapping through the list of items 
-        from the state of the BaseCard comp 
+          Mapping through the list of items 
+          from the state of the BaseCard comp 
         */}
-        {this.props.items.map(item => (
-          <ListItem role={undefined} dense button>
+        {this.props.items.map((item, index) => (
+          <ListItem
+            role={undefined}
+            dense
+            button
+            key={index}
+          >
             <ListItemIcon>
-              <Checkbox edge="start" disableRipple onClick={this.checkedBox} />
+              <Checkbox edge="start" disableRipple onClick={() => { this.checkedBox(item, index) }} />
             </ListItemIcon>
-            <StyledListItemText checked={this.state.checked}>{item}
+            <StyledListItemText checked={this.state.checked}>
+              {item}
             </StyledListItemText>
             <StyledListItemIcon>
               <DeleteIcon onClick={() => { this.removeItem(item) }} />
